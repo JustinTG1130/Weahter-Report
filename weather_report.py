@@ -15,7 +15,8 @@ weatherStackKey = os.getenv("WEATHERSTACK_API_KEY")
 def get_weather(location):
     params = {
         'access_key': weatherStackKey,
-        'query': location
+        'query': location,
+        'units': 'f'
     }
 
     # Makes the API request
@@ -29,7 +30,6 @@ def get_weather(location):
         location = data['location']['name']
         temperature = data['current']['temperature']
         condition = data['current']['weather_descriptions'][0]
-        temperature = (temperature * 9/5) + 32
         return f"Weather in {location}: {condition}, {temperature}°F"
 
 
